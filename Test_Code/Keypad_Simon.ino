@@ -21,7 +21,7 @@ char hexaKeys[ROWS][COLS] = {
 byte rowPins[ROWS] = {9, 8, 7, 6}; 
 byte colPins[COLS] = {5, 4, 3}; 
 
-Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
+Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
 void setup(){
   Serial.begin(9600);
@@ -50,14 +50,18 @@ void loop(){
     delay(750);                     //"Clear Screen"
     lcd.clear();
     answer = 0;
+    lcd.setCursor(0,0);
+    lcd.print("Test: ");
+    lcd.setCursor(5,0);
+    lcd.print(simonPattern);
+    delay(500);
+    lcd.clear();
 
-    while (answer < simonPattern){
       char customKey = customKeypad.getKey();
       
       if (customKey){
         lcd.print(customKey);
       }
-    }
     
     if (answer == simonPattern){    //Check if pattern is correct
       lcd.print("Correct!");

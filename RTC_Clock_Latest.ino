@@ -3,7 +3,7 @@
 #include <DS3231.h> //Library from http://www.rinkydinkelectronics.com/library.php?id=73
 #include <Wire.h>
 #include <LiquidCrystal.h>  
-#include <Time.h> /*Library downloaded from Arduino IDE*/
+//#include <Time.h> /*Library downloaded from Arduino IDE*/
 //Keypad Library  http://playground.arduino.cc/Code/Keypad#Download
 
 /*The LCD circuit:
@@ -47,7 +47,7 @@ char hexaKeys[ROWS][COLS] = { //Defining Keypad
   {'7', '8', '9'},
   {'*', '0', '#'}
 };
-Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
+//Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
 
 void setup() {
   rtc.begin(); // Activate DS3231 for track time and record temperature
@@ -108,12 +108,12 @@ void loop() {
   delay(1000);
   lcd.clear();
 
-  char customKey = customKeypad.getKey();
+//  char customKey = customKeypad.getKey();
   
-  if (customKey){ //Key Input
+/*  if (customKey){ //Key Input
     Serial.println(customKey);
   }
-}
+}*/
 // Below are 26 functions that correspond to the 26 if statements in the loop.
 // In general, these functions clear the previously displayed data from the lcd screen, then print the approriate message according to the event.
 // These functions then enter the Buzz function, where the message for the particular event contiues to display for 5 seconds and is accompanied by an Alarm sound for the same duration.
